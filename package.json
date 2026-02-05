@@ -1,0 +1,40 @@
+{
+  "name": "cse341-final-project",
+  "version": "1.0.0",
+  "description": "CSE 341 Final Project - REST API with MongoDB, OAuth and Swagger",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "test": "jest --runInBand"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "mongodb",
+    "swagger",
+    "oauth",
+    "jwt",
+    "cse341"
+  ],
+  "author": "Icaro Angelo",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.4",
+    "express": "^4.19.2",
+    "express-validator": "^7.3.1",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.12.1",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "swagger-ui-express": "^5.0.1",
+    "yamljs": "^0.3.0"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "nodemon": "^3.1.11",
+    "supertest": "^7.0.0"
+  }
+}
