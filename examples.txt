@@ -1,0 +1,34 @@
+test products
+{
+  "name": "Boxing Gloves",
+  "brand": "Everlast",
+  "price": 59.99,
+  "category": "Gloves",
+  "stock": 15,
+  "description": "Professional boxing gloves",
+  "rating": 5
+}
+
+test categories
+{
+  "name": "Gloves",
+  "description": "All types of fight gloves"
+}
+
+
+test user
+{
+  "googleId": "123456789",
+  "name": "John Lennon",
+  "email": "john@example.com"
+}
+
+
+test order
+{
+  "productId": "-------",
+  "quantity": 2,
+  "total": 119.98,
+  "customerName": "John Lennon",
+  "status": "pending"
+}

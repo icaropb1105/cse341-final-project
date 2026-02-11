@@ -53,32 +53,20 @@
                 "schema": { "$ref": "#/components/schemas/Product" }
               }
             }
-          },
-          "400": { "description": "Invalid input" }
+          }
         }
       }
     },
+
     "/products/{id}": {
       "get": {
         "summary": "Get product by ID",
         "tags": ["Products"],
         "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": { "type": "string" }
-          }
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
         ],
         "responses": {
-          "200": {
-            "description": "Product found",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/Product" }
-              }
-            }
-          },
+          "200": { "description": "Product found" },
           "404": { "description": "Product not found" }
         }
       },
@@ -86,12 +74,7 @@
         "summary": "Update product",
         "tags": ["Products"],
         "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": { "type": "string" }
-          }
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
         ],
         "requestBody": {
           "required": true,
@@ -102,14 +85,7 @@
           }
         },
         "responses": {
-          "200": {
-            "description": "Product updated",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/Product" }
-              }
-            }
-          },
+          "200": { "description": "Product updated" },
           "404": { "description": "Product not found" }
         }
       },
@@ -117,12 +93,7 @@
         "summary": "Delete product",
         "tags": ["Products"],
         "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": { "type": "string" }
-          }
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
         ],
         "responses": {
           "200": { "description": "Deleted successfully" },
@@ -132,118 +103,88 @@
     },
 
     "/categories": {
-      "get": {
-        "summary": "Get all categories",
-        "tags": ["Categories"],
-        "responses": {
-          "200": {
-            "description": "List of categories",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": { "$ref": "#/components/schemas/Category" }
-                }
-              }
-            }
-          }
-        }
-      },
+      "get": { "summary": "Get all categories", "tags": ["Categories"], "responses": { "200": { "description": "List of categories" } } },
       "post": {
         "summary": "Create a category",
         "tags": ["Categories"],
         "requestBody": {
           "required": true,
-          "content": {
-            "application/json": {
-              "schema": { "$ref": "#/components/schemas/CategoryInput" }
-            }
-          }
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/CategoryInput" } } }
         },
-        "responses": {
-          "201": {
-            "description": "Category created",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/Category" }
-              }
-            }
-          }
-        }
+        "responses": { "201": { "description": "Category created" } }
       }
     },
+
     "/categories/{id}": {
-      "get": {
-        "summary": "Get category by ID",
-        "tags": ["Categories"],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": { "type": "string" }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Category found",
-            "content": {
-              "application/json": {
-                "schema": { "$ref": "#/components/schemas/Category" }
-              }
-            }
-          },
-          "404": { "description": "Category not found" }
-        }
-      },
-      "put": {
-        "summary": "Update category",
-        "tags": ["Categories"],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": { "type": "string" }
-          }
-        ],
+      "get": { "summary": "Get category by ID", "tags": ["Categories"], "responses": { "200": {}, "404": {} } },
+      "put": { "summary": "Update category", "tags": ["Categories"], "responses": { "200": {}, "404": {} } },
+      "delete": { "summary": "Delete category", "tags": ["Categories"], "responses": { "200": {}, "404": {} } }
+    },
+
+    "/users": {
+      "get": { "summary": "Get all users", "tags": ["Users"], "responses": { "200": {} } },
+      "post": {
+        "summary": "Create user",
+        "tags": ["Users"],
         "requestBody": {
           "required": true,
-          "content": {
-            "application/json": {
-              "schema": { "$ref": "#/components/schemas/CategoryInput" }
-            }
-          }
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/UserInput" } } }
         },
+        "responses": { "201": {} }
+      }
+    },
+
+    "/users/{id}": {
+      "get": { "summary": "Get user by ID", "tags": ["Users"], "responses": { "200": {}, "404": {} } },
+      "put": { "summary": "Update user", "tags": ["Users"], "responses": { "200": {}, "404": {} } },
+      "delete": { "summary": "Delete user", "tags": ["Users"], "responses": { "200": {}, "404": {} } }
+    },
+
+    "/orders": {
+      "get": { "summary": "Get all orders", "tags": ["Orders"], "responses": { "200": {} } },
+      "post": {
+        "summary": "Create order",
+        "tags": ["Orders"],
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "$ref": "#/components/schemas/OrderInput" } } }
+        },
+        "responses": { "201": {} }
+      }
+    },
+
+    "/orders/{id}": {
+      "get": { "summary": "Get order by ID", "tags": ["Orders"], "responses": { "200": {}, "404": {} } },
+      "put": { "summary": "Update order", "tags": ["Orders"], "responses": { "200": {}, "404": {} } },
+      "delete": { "summary": "Delete order", "tags": ["Orders"], "responses": { "200": {}, "404": {} } }
+    },
+
+    "/auth/google": {
+      "get": {
+        "summary": "Login with Google",
+        "tags": ["Auth"],
+        "responses": { "302": { "description": "Redirect to Google login" } }
+      }
+    },
+
+    "/auth/google/callback": {
+      "get": {
+        "summary": "Google OAuth callback",
+        "tags": ["Auth"],
         "responses": {
           "200": {
-            "description": "Category updated",
+            "description": "User logged in",
             "content": {
               "application/json": {
-                "schema": { "$ref": "#/components/schemas/Category" }
+                "schema": { "$ref": "#/components/schemas/AuthResponse" }
               }
             }
           }
-        }
-      },
-      "delete": {
-        "summary": "Delete category",
-        "tags": ["Categories"],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": { "type": "string" }
-          }
-        ],
-        "responses": {
-          "200": { "description": "Deleted successfully" },
-          "404": { "description": "Category not found" }
         }
       }
     }
   },
+
   "components": {
     "schemas": {
       "Product": {
@@ -256,11 +197,10 @@
           "brand": { "type": "string" },
           "stock": { "type": "number" },
           "description": { "type": "string" },
-          "rating": { "type": "number" },
-          "createdAt": { "type": "string" },
-          "updatedAt": { "type": "string" }
+          "rating": { "type": "number" }
         }
       },
+
       "ProductInput": {
         "type": "object",
         "required": ["name", "price", "category", "brand", "stock", "description"],
@@ -274,18 +214,74 @@
           "rating": { "type": "number" }
         }
       },
+
       "Category": {
         "type": "object",
         "properties": {
           "_id": { "type": "string" },
-          "name": { "type": "string" }
+          "name": { "type": "string" },
+          "description": { "type": "string" }
         }
       },
+
       "CategoryInput": {
         "type": "object",
         "required": ["name"],
         "properties": {
-          "name": { "type": "string" }
+          "name": { "type": "string" },
+          "description": { "type": "string" }
+        }
+      },
+
+      "User": {
+        "type": "object",
+        "properties": {
+          "_id": { "type": "string" },
+          "googleId": { "type": "string" },
+          "name": { "type": "string" },
+          "email": { "type": "string" }
+        }
+      },
+
+      "UserInput": {
+        "type": "object",
+        "required": ["googleId", "name", "email"],
+        "properties": {
+          "googleId": { "type": "string" },
+          "name": { "type": "string" },
+          "email": { "type": "string" }
+        }
+      },
+
+      "Order": {
+        "type": "object",
+        "properties": {
+          "_id": { "type": "string" },
+          "productId": { "type": "string" },
+          "quantity": { "type": "number" },
+          "total": { "type": "number" },
+          "customerName": { "type": "string" },
+          "status": { "type": "string" }
+        }
+      },
+
+      "OrderInput": {
+        "type": "object",
+        "required": ["productId", "quantity", "total", "customerName"],
+        "properties": {
+          "productId": { "type": "string" },
+          "quantity": { "type": "number" },
+          "total": { "type": "number" },
+          "customerName": { "type": "string" },
+          "status": { "type": "string" }
+        }
+      },
+
+      "AuthResponse": {
+        "type": "object",
+        "properties": {
+          "user": { "$ref": "#/components/schemas/User" },
+          "token": { "type": "string" }
         }
       }
     }
