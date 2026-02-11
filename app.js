@@ -14,21 +14,34 @@ app.use(express.json());
 
 // Passport config 
 require('./src/config/passport');
-
 app.use(passport.initialize());
 
 // MongoDB
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log('MongoDB connected'))
-  .catch(err => console.error(err));
+  .catch(err => console.error('Mongo error:', err));
 
-// Rotas
+// Rotas (com DEBUG)
 const productRoutes = require('./src/routes/productRoutes');
 const categoryRoutes = require('./src/routes/categoryRoutes');
 const userRoutes = require('./src/routes/userRoutes');
 const orderRoutes = require('./src/routes/orderRoutes');
 const authRoutes = require('./src/routes/authRoutes');
 
+console.log('DEBUG productRoutes:', productRoutes);
+console.log('DEBUG categoryRoutes:', categoryRoutes);
+console.log('DEBUG userRoutes:', userRoutes);
+console.log('DEBUG orderRoutes:', orderRoutes);
+console.log('DEBUG authRoutes:', authRoutes);
+
+console.log('TYPES:');
+console.log('products:', typeof productRoutes);
+console.log('categories:', typeof categoryRoutes);
+console.log('users:', typeof userRoutes);
+console.log('orders:', typeof orderRoutes);
+console.log('auth:', typeof authRoutes);
+
+// Só sobe a API depois do debug
 app.use('/products', productRoutes);
 app.use('/categories', categoryRoutes);
 app.use('/users', userRoutes);
