@@ -27,6 +27,6 @@ router.get('/:id', controller.getProductById);
 router.post('/', isAuth, productValidator, validate, controller.createProduct);
 router.put('/:id', isAuth, productValidator, validate, controller.updateProduct);
 
-router.delete('/:id', controller.deleteProduct);
+router.delete('/:id', isAuth, controller.deleteProduct);
 
 module.exports = router;

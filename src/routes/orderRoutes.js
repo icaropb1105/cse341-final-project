@@ -32,6 +32,6 @@ router.get('/:id', getOrderById);
 router.post('/', isAuth, orderValidator, validate, createOrder);
 router.put('/:id', isAuth, orderValidator, validate, updateOrder);
 
-router.delete('/:id', deleteOrder);
+router.delete('/:id', isAuth, deleteOrder);
 
 module.exports = router;

@@ -30,6 +30,6 @@ router.get('/:id', getUserById);
 router.post('/', isAuth, userValidator, validate, createUser);
 router.put('/:id', isAuth, userValidator, validate, updateUser);
 
-router.delete('/:id', deleteUser);
+router.delete('/:id', isAuth, deleteUser);
 
 module.exports = router;
