@@ -109,35 +109,57 @@
     },
 
     "/category": {
-  "get": {
-    "summary": "Get all categories",
-    "tags": ["Categories"],
-    "responses": { "200": { "description": "List of categories" } }
-  },
-  "post": {
-    "summary": "Create a category",
-    "tags": ["Categories"],
-    "requestBody": {
-      "required": true,
-      "content": {
-        "application/json": {
-          "schema": { "$ref": "#/components/schemas/CategoryInput" }
+      "get": {
+        "summary": "Get all categories",
+        "tags": ["Categories"],
+        "responses": { "200": { "description": "List of categories" } }
+      },
+      "post": {
+        "summary": "Create a category",
+        "tags": ["Categories"],
+        "security": [{ "bearerAuth": [] }],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/CategoryInput" }
+            }
+          }
+        },
+        "responses": {
+          "201": { "description": "Category created" },
+          "401": { "description": "Unauthorized" }
         }
       }
     },
-    "responses": {
-      "201": { "description": "Category created" },
-      "401": { "description": "Unauthorized" }
-    }
-  }
-},
 
-"/category/{id}": {
-  "get": { "summary": "Get category by ID", "tags": ["Categories"], "responses": { "200": {}, "404": {} } },
-  "put": { "summary": "Update category", "tags": ["Categories"], "responses": { "200": {}, "404": {} } },
-  "delete": { "summary": "Delete category", "tags": ["Categories"], "responses": { "200": {}, "404": {} } }
-}
-
+    "/category/{id}": {
+      "get": {
+        "summary": "Get category by ID",
+        "tags": ["Categories"],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": { "200": {}, "404": {} }
+      },
+      "put": {
+        "summary": "Update category",
+        "tags": ["Categories"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": { "200": {}, "404": {}, "401": {} }
+      },
+      "delete": {
+        "summary": "Delete category",
+        "tags": ["Categories"],
+        "security": [{ "bearerAuth": [] }],
+        "parameters": [
+          { "name": "id", "in": "path", "required": true, "schema": { "type": "string" } }
+        ],
+        "responses": { "200": {}, "404": {}, "401": {} }
+      }
     },
 
     "/users": {
@@ -151,6 +173,7 @@
           "content": { "application/json": { "schema": { "$ref": "#/components/schemas/UserInput" } } }
         },
         "responses": { "201": {}, "401": {} }
+      }
     },
 
     "/users/{id}": {
